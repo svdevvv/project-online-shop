@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/postgres</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">svdev</property>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="format_sql">true</property>
+        <property name="hibernate.use_sql_comments">true</property>
+        <property name="show_sql">false</property>
+
+
+        <mapping class="org.project.entity.userEntity.UserEntity"/>
+        <mapping class="org.project.entity.blackListEntity.BlackListEntity"/>
+        <mapping class="org.project.entity.cartEntity.CartEntity"/>
+        <mapping class="org.project.entity.categoryEntity.CategoryEntity"/>
+        <mapping class="org.project.entity.ordersEntity.OrdersEntity"/>
+        <mapping class="org.project.entity.productEntity.ProductEntity"/>
+        <mapping class="org.project.entity.promoCodeEntity.PromoCodeEntity"/>
+        <mapping class="org.project.entity.promoCodeUsageEntity.PromoCodeUsageEntity"/>
+        <mapping class="org.project.entity.roleEntity.RoleEntity"/>
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>
