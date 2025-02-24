@@ -15,7 +15,6 @@
 
         <mapping class="org.project.entity.classes.UserEntity"/>
         <mapping class="org.project.entity.classes.BlackListEntity"/>
-        <mapping class="org.project.entity.classes.CartEntity"/>
         <mapping class="org.project.entity.classes.OrdersEntity"/>
         <mapping class="org.project.entity.classes.ProductEntity"/>
         <mapping class="org.project.entity.classes.PromoCodeEntity"/>
