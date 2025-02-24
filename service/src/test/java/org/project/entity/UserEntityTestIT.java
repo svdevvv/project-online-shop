@@ -3,6 +3,7 @@ package org.project.entity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.project.base.EntityTestBaseIT;
+import org.project.entity.classes.RoleEnum;
 import org.project.entity.classes.UserEntity;
 
 
@@ -17,7 +18,7 @@ class UserEntityTestIT extends EntityTestBaseIT {
                 .firstName("Alex")
                 .lastName("Kpucinov")
                 .email("kpucino@gmail.com")
-                .role("ADMIN")
+                .role(RoleEnum.ADMIN)
                 .address("25, Vilnus")
                 .password("12345")
                 .birthday(LocalDate.of(2020,1,1))
@@ -36,7 +37,7 @@ class UserEntityTestIT extends EntityTestBaseIT {
                 .firstName("Alex")
                 .lastName("Kpucinov")
                 .email("kpucino@gmail.com")
-                .role("ADMIN")
+                .role(RoleEnum.ADMIN)
                 .address("25, Vilnus")
                 .password("12345")
                 .birthday(LocalDate.of(2020,1,1))
@@ -46,7 +47,7 @@ class UserEntityTestIT extends EntityTestBaseIT {
                 .firstName("Andrey")
                 .lastName("Kpucinov")
                 .email("kpucino@gmail.com")
-                .role("ADMIN")
+                .role(RoleEnum.ADMIN)
                 .address("25, Vilnus")
                 .password("12345")
                 .birthday(LocalDate.of(2020,1,1))
