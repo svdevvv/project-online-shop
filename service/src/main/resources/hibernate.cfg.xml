@@ -14,15 +14,13 @@
         <property name="show_sql">false</property>
 
 
-        <mapping class="org.project.entity.userEntity.UserEntity"/>
-        <mapping class="org.project.entity.blackListEntity.BlackListEntity"/>
-        <mapping class="org.project.entity.cartEntity.CartEntity"/>
-        <mapping class="org.project.entity.categoryEntity.CategoryEntity"/>
-        <mapping class="org.project.entity.ordersEntity.OrdersEntity"/>
-        <mapping class="org.project.entity.productEntity.ProductEntity"/>
-        <mapping class="org.project.entity.promoCodeEntity.PromoCodeEntity"/>
-        <mapping class="org.project.entity.promoCodeUsageEntity.PromoCodeUsageEntity"/>
-        <mapping class="org.project.entity.roleEntity.RoleEntity"/>
+        <mapping class="org.project.entity.classes.UserEntity"/>
+        <mapping class="org.project.entity.classes.BlackListEntity"/>
+        <mapping class="org.project.entity.classes.OrdersEntity"/>
+        <mapping class="org.project.entity.classes.OrderItems"/>
+        <mapping class="org.project.entity.classes.ProductEntity"/>
+        <mapping class="org.project.entity.classes.PromoCodeEntity"/>
+        <mapping class="org.project.entity.classes.PromoCodeUsageEntity"/>
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
     </session-factory>

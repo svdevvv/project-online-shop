@@ -1,33 +1,37 @@
-package org.project.entity.promoCodeEntity;
+package org.project.entity.classes;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.project.entity.interfaces.BaseEntity;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Builder
-@Entity
-@Table(name = "promo_code", schema = "public")
-public class PromoCodeEntity {
-
+public class OrderItems implements BaseEntity<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String code;
-    private Double price;
-    private Double discount;
-    private LocalDate startFrom;
-    private LocalDate expirationDate;
+    @ManyToOne
+    private OrdersEntity orderId;
+
+    @ManyToOne
+    private ProductEntity productId;
+
+    private Integer quantity;
+    private BigDecimal price;
+
+    private LocalDate createdAt;
 }
