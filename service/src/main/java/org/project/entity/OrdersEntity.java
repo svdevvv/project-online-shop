@@ -1,6 +1,7 @@
-package org.project.entity.classes;
+package org.project.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,8 +12,9 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.project.entity.interfaces.BaseEntity;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -22,6 +24,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode
+@ToString(exclude = "orderItems")
 @Entity
 @Table(name = "orders", schema = "public")
 public class OrdersEntity implements BaseEntity<Long> {
@@ -30,11 +34,15 @@ public class OrdersEntity implements BaseEntity<Long> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private UserEntity userId;
 
     private BigDecimal price;
 
-    @OneToMany(mappedBy = "orderId")
+    private String status;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "order")
     private List<OrderItems> orderItems = new ArrayList<>();
 }
+

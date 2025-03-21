@@ -1,4 +1,4 @@
-package org.project.entity.classes;
+package org.project.entity;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -15,7 +15,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.project.entity.interfaces.BaseEntity;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -26,8 +25,8 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-@EqualsAndHashCode
-@ToString
+@EqualsAndHashCode(of = "email")
+@ToString(exclude = {"usagesCodes","blackList","ordersList"})
 @Table(name = "users")
 public class UserEntity implements BaseEntity<Long> {
 
@@ -41,18 +40,21 @@ public class UserEntity implements BaseEntity<Long> {
     private String email;
 
     @Enumerated(EnumType.STRING)
-    private RoleEnum role;
+    private Role role;
 
     private String address;
     private String password;
     private LocalDate birthday;
 
-    @OneToMany(mappedBy = "userId")
+    @Builder.Default
+    @OneToMany(mappedBy = "user")
     private List<PromoCodeUsageEntity> usagesCodes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "userId")
-    private List<BlackListEntity> blackLists = new ArrayList<>();
+    @Builder.Default
+    @OneToMany(mappedBy = "user")
+    private List<BlackListEntity> blackList = new ArrayList<>();
 
+    @Builder.Default
     @OneToMany(mappedBy = "userId")
     private List<OrdersEntity> ordersList = new ArrayList<>();
 }

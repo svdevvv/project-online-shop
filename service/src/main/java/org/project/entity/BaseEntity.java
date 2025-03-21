@@ -1,4 +1,4 @@
-package org.project.entity.interfaces;
+package org.project.entity;
 
 public interface BaseEntity<T> {
 
