@@ -1,4 +1,4 @@
-package org.project.entity.classes;
+package org.project.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,7 +10,9 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -21,14 +23,17 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode
+@ToString
 @Entity
 @Table(name = "product", schema = "public")
-public class ProductEntity {
+public class ProductEntity implements BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
+    private Category category;
     private String name;
     private String description;
     private BigDecimal price;
@@ -36,8 +41,8 @@ public class ProductEntity {
     private String image;
     private Instant createdAt;
 
-    @OneToMany(mappedBy = "productId")
+    @Builder.Default
+    @OneToMany(mappedBy = "product")
     private List<OrderItems> orderItems = new ArrayList<>();
-
 
 }

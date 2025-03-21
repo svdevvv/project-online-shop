@@ -1,4 +1,4 @@
-package org.project.entity.classes;
+package org.project.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,8 +10,9 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.project.entity.interfaces.BaseEntity;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -22,6 +23,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode(of = "code")
+@ToString(exclude = "promoCodeUsages")
 @Entity
 @Table(name = "promo_code", schema = "public")
 public class PromoCodeEntity implements BaseEntity<Long> {
@@ -35,6 +38,7 @@ public class PromoCodeEntity implements BaseEntity<Long> {
     private Instant createdAt;
     private Instant endAt;
 
-    @OneToMany(mappedBy = "promoCodeId")
-    private List<PromoCodeUsageEntity> usagesCodes = new ArrayList<>();
+    @Builder.Default
+    @OneToMany(mappedBy = "promoCode")
+    private List<PromoCodeUsageEntity> promoCodeUsages = new ArrayList<>();
 }
