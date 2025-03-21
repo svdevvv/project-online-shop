@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 public class FindProductFilter {
     String name;
     String description;
-    String category;
     BigDecimal price;
     String status;
 }
