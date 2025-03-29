@@ -2,8 +2,6 @@ package org.project.config;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;
-import org.hibernate.cfg.Configuration;
 import org.project.repository.CrudInterface;
 import org.project.utils.HibernateUtil;
 import org.springframework.context.annotation.Bean;

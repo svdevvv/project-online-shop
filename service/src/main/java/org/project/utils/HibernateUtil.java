@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 
 @UtilityClass
 public class HibernateUtil {
-    public static SessionFactory buildSessionFactory() {
+    public static SessionFactory buildConfiguration() {
         Configuration configuration = new Configuration();
         configuration.setPhysicalNamingStrategy(new CamelCaseToUnderscoresNamingStrategy());
         configuration.configure();

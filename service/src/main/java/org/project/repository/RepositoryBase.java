@@ -1,15 +1,10 @@
 package org.project.repository;
 
-import com.querydsl.core.types.dsl.EntityPathBase;
-import com.querydsl.jpa.impl.JPAQuery;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.CriteriaQuery;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.project.entity.BaseEntity;
-import org.springframework.stereotype.Repository;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
