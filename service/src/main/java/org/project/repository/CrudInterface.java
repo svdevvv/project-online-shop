@@ -1,4 +1,4 @@
-package org.project.dao;
+package org.project.repository;
 
 import org.project.entity.BaseEntity;
 

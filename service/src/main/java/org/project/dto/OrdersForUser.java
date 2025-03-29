@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Value
 @Builder
-public class FIndOrdersForUser {
+public class OrdersForUser {
     Integer userId;
     Integer orderId;
     BigDecimal price;

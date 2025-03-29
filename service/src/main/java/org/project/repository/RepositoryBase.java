@@ -1,23 +1,27 @@
-package org.project.dao;
+package org.project.repository;
 
 import com.querydsl.core.types.dsl.EntityPathBase;
 import com.querydsl.jpa.impl.JPAQuery;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.CriteriaQuery;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.project.entity.BaseEntity;
+import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
+
 @RequiredArgsConstructor
 public abstract class RepositoryBase<K extends Serializable, E extends BaseEntity<Long>> implements CrudInterface<K, E> {
 
-
     private final Class<E> clazz;
-    private final EntityPathBase<E> entityPath;
-    private final EntityManager entityManager;
 
+    @Getter
+    private final EntityManager entityManager;
 
     @Override
     public E save(E entity) {
@@ -43,10 +47,10 @@ public abstract class RepositoryBase<K extends Serializable, E extends BaseEntit
 
     @Override
     public List<E> findAll() {
-        return new JPAQuery<E>(entityManager)
-                .select(entityPath)
-                .from(entityPath)
-                .fetch();
+        CriteriaQuery<E> criteria = entityManager.getCriteriaBuilder().createQuery(clazz);
+        criteria.select(criteria.from(clazz));
+        return entityManager.createQuery(criteria)
+                .getResultList();
     }
 
 }

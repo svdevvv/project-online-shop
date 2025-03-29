@@ -23,8 +23,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode
-@ToString
+@EqualsAndHashCode(exclude = {"createdAt","image","status"})
+@ToString(exclude = {"createdAt","image","status"})
 @Entity
 @Table(name = "product", schema = "public")
 public class ProductEntity implements BaseEntity<Long> {

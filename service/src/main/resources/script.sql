@@ -5,7 +5,6 @@ CREATE TABLE users
     first_name VARCHAR(256) NOT NULL,
     last_name  VARCHAR(256),
     birthday   DATE,
-    e_mail     VARCHAR(256) NOT NULL UNIQUE,
     role       VARCHAR(64),
     address    VARCHAR(256),
     password   VARCHAR(256)
@@ -58,9 +57,16 @@ CREATE TABLE orders
     id      BIGSERIAL PRIMARY KEY,
     user_id INT     NOT NULL,
     price   DECIMAL NOT NULL,
-    cart_id INT     NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
+
+
+
+ALTER TABLE orders
+DROP COLUMN price;
+
+ALTER TABLE orders
+ADD COLUMN price DECIMAL NOT NULL;
 
 CREATE TABLE order_items
 (
@@ -71,3 +77,8 @@ CREATE TABLE order_items
     price      DECIMAL(7, 2),
     created_at TIMESTAMP NOT NULL
 );
+ALTER TABLE order_items
+DROP COLUMN price;
+
+ALTER TABLE order_items
+ADD COLUMN price NUMERIC NOT NULL;
