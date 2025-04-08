@@ -14,7 +14,6 @@ import java.util.Optional;
 public abstract class RepositoryBase<K extends Serializable, E extends BaseEntity<Long>> implements CrudInterface<K, E> {
 
     private final Class<E> clazz;
-
     @Getter
     private final EntityManager entityManager;
 
