@@ -35,6 +35,7 @@ public class OrderItems implements BaseEntity<Long> {
     private ProductEntity product;
 
     private Integer quantity;
+
     private BigDecimal price;
 
     private Instant createdAt;

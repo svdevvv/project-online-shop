@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode
-@ToString
+@ToString(exclude = "user")
 @Entity
 @Table(name = "black_list", schema = "public")
 public class BlackListEntity implements BaseEntity<Long> {
