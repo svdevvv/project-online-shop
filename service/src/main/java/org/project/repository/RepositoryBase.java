@@ -5,10 +5,10 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.project.entity.BaseEntity;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
-
 
 @RequiredArgsConstructor
 public abstract class RepositoryBase<K extends Serializable, E extends BaseEntity<Long>> implements CrudInterface<K, E> {

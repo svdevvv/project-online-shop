@@ -1,15 +1,8 @@
 package org.project.repository;
 
-import jakarta.persistence.EntityManager;
 import org.project.entity.PromoCodeEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.Repository;
 
-@Repository
-public class PromoCodeRepository extends RepositoryBase<Long, PromoCodeEntity> {
+public interface PromoCodeRepository extends Repository<PromoCodeEntity, Long> {
 
-    @Autowired
-    public PromoCodeRepository(EntityManager entityManager) {
-        super(PromoCodeEntity.class, entityManager);
-    }
 }

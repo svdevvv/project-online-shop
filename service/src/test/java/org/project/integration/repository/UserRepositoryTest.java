@@ -11,9 +11,8 @@ import org.springframework.test.context.TestConstructor;
 import java.util.List;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -25,11 +24,11 @@ class UserRepositoryTest extends IntegrationTestBase {
     @Test
     void saveUser() {
         UserEntity user = firstUser();
+
         userRepository.save(user);
 
         assertThat(userRepository.findById(user.getId())).isPresent();
         log.info("User saved with id {}", user.getId());
-
     }
 
     @Test
@@ -64,8 +63,7 @@ class UserRepositoryTest extends IntegrationTestBase {
         userRepository.save(firstUser());
 
         user.setFirstName("Misha");
-
-        userRepository.update(user);
+        userRepository.save(user);
 
         assertEquals("Misha", user.getFirstName());
         log.info("Users updated with update");

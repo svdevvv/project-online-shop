@@ -1,15 +1,8 @@
 package org.project.repository;
 
-import jakarta.persistence.EntityManager;
 import org.project.entity.OrderItems;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.Repository;
 
-@Repository
-public class OrdersItemsRepository extends RepositoryBase<Long, OrderItems> {
+public interface OrdersItemsRepository extends Repository<OrderItems, Long> {
 
-    @Autowired
-    public OrdersItemsRepository(EntityManager entityManager) {
-        super(OrderItems.class, entityManager);
-    }
 }
