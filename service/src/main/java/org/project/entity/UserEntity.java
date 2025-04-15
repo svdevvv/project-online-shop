@@ -1,14 +1,14 @@
 package org.project.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.GenerationType;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,8 +25,8 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-@EqualsAndHashCode(of = "email")
-@ToString(exclude = {"usagesCodes","blackList","ordersList"})
+@EqualsAndHashCode(of = "login")
+@ToString(exclude = {"usagesCodes", "blackList", "ordersList"})
 @Table(name = "users")
 public class UserEntity implements BaseEntity<Long> {
 
@@ -34,16 +34,21 @@ public class UserEntity implements BaseEntity<Long> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "login")
     private String login;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
-    private String email;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @Column(name = "address")
     private String address;
+    @Column(name = "password")
     private String password;
+    @Column(name = "birthday")
     private LocalDate birthday;
 
     @Builder.Default
@@ -55,6 +60,6 @@ public class UserEntity implements BaseEntity<Long> {
     private List<BlackListEntity> blackList = new ArrayList<>();
 
     @Builder.Default
-    @OneToMany(mappedBy = "userId")
+    @OneToMany(mappedBy = "user")
     private List<OrdersEntity> ordersList = new ArrayList<>();
 }

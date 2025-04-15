@@ -1,5 +1,6 @@
 package org.project.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@ToString(exclude = {"order","product"})
+@ToString(exclude = {"order", "product"})
 @Data
 @Builder
 public class OrderItems implements BaseEntity<Long> {
@@ -34,9 +35,10 @@ public class OrderItems implements BaseEntity<Long> {
     @ManyToOne(fetch = FetchType.LAZY)
     private ProductEntity product;
 
+    @Column(name = "quantity")
     private Integer quantity;
-
+    @Column(name = "price")
     private BigDecimal price;
-
+    @Column(name = "created_at")
     private Instant createdAt;
 }

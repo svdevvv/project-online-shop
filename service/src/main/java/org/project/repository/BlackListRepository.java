@@ -1,15 +1,8 @@
 package org.project.repository;
 
-import jakarta.persistence.EntityManager;
 import org.project.entity.BlackListEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.Repository;
 
-@Repository
-public class BlackListRepository extends RepositoryBase<Long, BlackListEntity> {
+public interface BlackListRepository extends Repository<BlackListEntity, Long> {
 
-    @Autowired
-    public BlackListRepository(EntityManager entityManager) {
-        super(BlackListEntity.class, entityManager);
-    }
 }
